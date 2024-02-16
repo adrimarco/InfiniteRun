@@ -637,6 +637,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &280245481
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3311036385461089818, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277391378277221364, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ae3a14640fe2cb409e28b8d662354aa, type: 3}
 --- !u!1 &288836649
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +776,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 288836652}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 979724579}
+        m_TargetAssemblyTypeName: GameOverController, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &288836652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,6 +1408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 979724578}
+  - component: {fileID: 979724579}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -1371,6 +1441,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &979724579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979724577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c2f0641cdb50d41a390c90cfd328df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
 --- !u!1001 &1046864516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1513,12 +1597,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 1269431197}
   dirtParticle: {fileID: 515573344}
-  playerAudio: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 0f7d0b7c3397f4dac91f20e8a77d2d57, type: 3}
   crashSound: {fileID: 8300000, guid: 913d6445ee8cc4152a9c18da590ee203, type: 3}
+  gameOverScreen: {fileID: 979724579}
   jumpForce: 18
   gravityModifier: 4
-  gameOver: 0
 --- !u!4 &1046864522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400066, guid: 70ab0d3e71b54ac4bbd703cb0a686c4d, type: 3}
@@ -2584,3 +2667,4 @@ SceneRoots:
   - {fileID: 1730135467}
   - {fileID: 232690007}
   - {fileID: 881315729}
+  - {fileID: 280245481}
