@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
-    float obstacleInterval = 1.5f;
-    float obstacleStart = 3.0f;
-    Vector3 spawnPosition = new Vector3(30.0f, 0.0f, 0.0f);
-    static PlayerController playerControllerScript;
+    private const float         MIN_SPAWN_TIME  = 0.8f;
+    private const float         MAX_SPAWN_TIME  = 1.4f;
+
+    [SerializeField]
+    private GameObject          obstaclePrefab;
+    [SerializeField]
+    private PlayerController    playerControllerScript;
+    [SerializeField]
+    private Vector3             spawnPosition           = new Vector3(30.0f, 0.0f, 0.0f);
+
+    private float               remainingSpawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObstacle", obstacleStart, obstacleInterval);
-        if (!playerControllerScript) {
-            playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-        }
+        remainingSpawnTime = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        remainingSpawnTime -= Time.deltaTime;
+
+        if(remainingSpawnTime <= 0f) {
+            SpawnObstacle();
+
+            remainingSpawnTime = Random.Range(MIN_SPAWN_TIME, MAX_SPAWN_TIME);
+        }
     }
 
     private void SpawnObstacle() {
