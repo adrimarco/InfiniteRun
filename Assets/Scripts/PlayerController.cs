@@ -78,9 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void CollideWithObstacle() {
         gameOver = true;
-        if(gameOverScreen != null) {
-            gameOverScreen.Show();
-        }
+        gameOverScreen.ShowScore();
 
         playerAnimator.SetBool("Death_b", true);
         playerAnimator.SetInteger("DeathType_int", 1);

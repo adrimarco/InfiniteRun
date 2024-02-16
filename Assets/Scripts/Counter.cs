@@ -32,4 +32,8 @@ public class Counter : MonoBehaviour
 
         scoreText.text = "Time: " + currentTime.ToString("F1");
     }
+
+    public float GetScore() {
+        return currentTime;
+    }
 }

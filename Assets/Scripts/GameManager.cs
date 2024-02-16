@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public const string DEFAULT_PLAYER_NAME = "Anonymous";
     // Singleton instance
     public static GameManager Instance { get; private set; }
+
+    // Score
+    public string  highScorePlayerName = "";
+    public float   highScore           = 0;
+    public string  currentPlayerName   = "";
 
     private void Awake() {
         if(Instance != null) {
