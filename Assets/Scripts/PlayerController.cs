@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator  = GetComponent<Animator>();
         playerAudio     = GetComponent<AudioSource>();
 
-        Physics.gravity *= gravityModifier;
+        Physics.gravity = Vector3.down * 9.81f * gravityModifier;
 
         gameOver        = false;
     }
@@ -53,10 +53,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Ground") && !gameOver) {
-            Land();
-        } else if (other.gameObject.CompareTag("Obstacle")) {
-            CollideWithObstacle();
+        if(!gameOver) { 
+            if(other.gameObject.CompareTag("Ground")) {
+                Land();
+            } else if (other.gameObject.CompareTag("Obstacle")) {
+                CollideWithObstacle();
+            }
         }
     }
 
