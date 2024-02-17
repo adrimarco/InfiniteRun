@@ -66,4 +66,12 @@ public class GameManager : MonoBehaviour
         highScore           = saved.highScore;
         highScorePlayerName = saved.highScorePlayerName;
     }
+
+    public string GetCurrentPlayerName() { 
+        return currentPlayerName.Length > 1 ? currentPlayerName : DEFAULT_PLAYER_NAME;
+    }
+
+    public string GetHighScorePlayerName() { 
+        return highScorePlayerName.Length > 1 ? highScorePlayerName : DEFAULT_PLAYER_NAME;
+    }
 }

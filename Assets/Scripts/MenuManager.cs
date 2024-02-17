@@ -29,6 +29,6 @@ public class MenuManager : MonoBehaviour
     public void SavePlayerName() {
         if (playerNameInput == null) return;
 
-        GameManager.Instance.currentPlayerName = playerNameInput.text;
+        GameManager.Instance.currentPlayerName = playerNameInput.text.Trim();
     }
 }

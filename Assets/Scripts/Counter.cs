@@ -6,6 +6,7 @@ using UnityEngine;
 public class Counter : MonoBehaviour
 {
     private float               currentTime;
+    private float               highScore;
     [SerializeField]
     private PlayerController    playerController;
     [SerializeField]
@@ -15,6 +16,10 @@ public class Counter : MonoBehaviour
     void Start()
     {
         currentTime = 0;
+        if (GameManager.Instance)
+            highScore = GameManager.Instance.highScore;
+        else
+            highScore = -1;
     }
 
     // Update is called once per frame
@@ -30,7 +35,10 @@ public class Counter : MonoBehaviour
     private void UpdateTimeDisplay() {
         if (scoreText == null) return;
 
-        scoreText.text = "Time: " + currentTime.ToString("F1");
+        scoreText.text = "Time: " + currentTime.ToString("F1") + "s";
+
+        if(highScore > 0 && currentTime > highScore) 
+            scoreText.color = Color.yellow;
     }
 
     public float GetScore() {
