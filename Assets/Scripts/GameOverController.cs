@@ -16,20 +16,22 @@ public class GameOverController : MonoBehaviour
 
     private float       highScore;
 
-    public void SetHighScoreText(string playerNamer, float score) {
+    public void SetHighScoreText(string playerName, float score) {
         if (highScoreText == null) return;
 
-        if (playerNamer.Trim().Length == 0) playerNamer = GameManager.DEFAULT_PLAYER_NAME;
+        if (playerName.Trim().Length <= 1) 
+            playerName = GameManager.DEFAULT_PLAYER_NAME;
 
-        highScoreText.text = playerNamer + ": " + score.ToString("F1");
+        highScoreText.text = playerName + ": " + score.ToString("F1");
     }
 
-    public void SetScoreText(string playerNamer, float score) {
+    public void SetScoreText(string playerName, float score) {
         if (scoreText == null) return;
 
-        if (playerNamer.Trim().Length == 0) playerNamer = GameManager.DEFAULT_PLAYER_NAME;
+        if (playerName.Trim().Length <= 1)
+            playerName = GameManager.DEFAULT_PLAYER_NAME;
 
-        scoreText.text = playerNamer + ": " + score.ToString("F1");
+        scoreText.text = playerName + ": " + score.ToString("F1");
     }
 
     public void MarkTextAsNewHighScore() {
@@ -63,6 +65,8 @@ public class GameOverController : MonoBehaviour
                 GameManager.Instance.highScore              = score;
                 GameManager.Instance.highScorePlayerName    = playerName;
             }
+
+            GameManager.Instance.SaveGameData();
         }
 
         SetScoreText(playerName, score);
